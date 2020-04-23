@@ -1,6 +1,6 @@
 const express = require("express");
 
-const Hobbits = require("../hobbits/hobbitsModel.js");
+const Employees = require("../employees/employeesModel.js");
 
 const server = express();
 
