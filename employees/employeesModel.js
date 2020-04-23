@@ -21,7 +21,7 @@ function remove(id) {
 }
 
 function getAll() {
-  return db('hobbits');
+  return db('employees');
 }
 
 function findById(id) {

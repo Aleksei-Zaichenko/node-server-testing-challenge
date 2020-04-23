@@ -10,10 +10,10 @@ server.get("/", (req, res) => {
   res.status(200).json({ api: "up" });
 });
 
-server.get("/hobbits", (req, res) => {
-  Hobbits.getAll()
-    .then(hobbits => {
-      res.status(200).json(hobbits);
+server.get("/employees", (req, res) => {
+  Employees.getAll()
+    .then(employees => {
+      res.status(200).json(employees);
     })
     .catch(error => {
       res.status(500).json(error);
