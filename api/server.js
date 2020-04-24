@@ -20,4 +20,16 @@ server.get("/employees", (req, res) => {
     });
 });
 
+server.post("/employees", (req, res) => {
+  const newEmmployee = req.body;
+
+  Employees.insert(newEmmployee)
+    .then(newId =>{
+      res.status(201).json({message: 'employee was added successfully'});
+    })
+    .catch(
+      res.status(500).json({message: error.message})
+    )
+});
+
 module.exports = server;
