@@ -21,15 +21,17 @@ server.get("/employees", (req, res) => {
 });
 
 server.post("/employees", (req, res) => {
-  const newEmmployee = req.body;
+  const newEmployeeInfo = req.body;
 
-  Employees.insert(newEmmployee)
-    .then(newId =>{
+  Employees.insert(newEmployeeInfo)
+    .then(([newId]) => {
+      console.log(newId)
       res.status(201).json({message: 'employee was added successfully'});
     })
-    .catch(
-      res.status(500).json({message: error.message})
-    )
+    .catch(err => {
+      console.log(err);
+      res.status(500).json({message: err.message});
+    });
 });
 
 module.exports = server;

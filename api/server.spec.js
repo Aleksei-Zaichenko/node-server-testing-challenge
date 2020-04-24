@@ -1,7 +1,6 @@
 const request = require('supertest');
-const server = require('./server');
-
-const db = require('../data/dbConfig');
+const server = require("./server.js");
+const db = require("../data/dbConfig.js");
 
 describe('server', () => {
 
@@ -14,15 +13,16 @@ describe('server', () => {
         })
     })
 
-    describe('POST /employees', ()=>{
+    describe('POST /employees', () => {
         it('should return message: employee was added successfully', async () => {
 
             // const employeeProperties = {name: 'Brianna', department:'fast-food'};
 
-            // const doesExist = await db('employees').where({name: employeeProperties.name});
-            // expect(doesExist).toHaveLength(0);
+             const doesExist = await db('employees').where({name: 'Brianna'});
+            expect(doesExist).toHaveLength(0);
 
-            return request(server).post('/employees')
+            await request(server)
+                    .post("/employees")
                     .send({name: 'Brianna', department:'fast-food'})
                     .then(res =>{
                         expect(res.body.message).toBe('employee was added successfully');

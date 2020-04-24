@@ -9,7 +9,7 @@ module.exports = {
 };
 
 async function insert(newEmployee) {
-  return db('employee').insert(newEmployee, 'id');
+  return db('employees').insert(newEmployee, "id");
 }
 
 async function update(id, changes) {
